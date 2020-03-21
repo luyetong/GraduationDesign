@@ -1,0 +1,227 @@
+@charset "UTF-8";
+/* CSS Document */
+
+ .icon-logo {
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+     }
+@media screen and (min-width:499px){
+        .icon-logo {
+                width: 155px;
+                height: 36px;
+        }
+}
+@media screen and (max-width:500px){
+        .icon-logo {
+                width: 122px;
+                height: 36px;
+        }
+}
+.icon-bag{
+         width: 20px; 
+         height: 20px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.icon-search {
+         width: 20px; 
+         height: 20px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.icon-account{
+         width: 20px; 
+         height: 20px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconaccount, .iconmakeup{
+        width: 20px; 
+        height: 20px;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+        margin-right: 10px;
+}
+.iconOrderList{
+        width: 25px;
+        height: 25px;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+        margin-right: 7px;
+        margin-left: -3px;
+}
+.icon-referafriend{
+         width: 18px; 
+         height: 18px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconorder-issues{
+		 width: 90px; 
+         height: 90px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-payments{
+		 width: 90px; 
+         height: 90px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-deliveries{
+	     width: 90px; 
+         height: 90px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-products{
+		 width: 90px; 
+         height: 90px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-technical{
+		 width: 90px; 
+         height: 90px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-ship{
+		 width: 24px; 
+         height: 24px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconlink-referafriend{
+	     width: 24px; 
+         height: 24px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconfacebook{
+		 width: 32px; 
+         height: 32px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconinstagram{
+		 width: 32px; 
+         height: 32px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconttww{
+		 width: 32px; 
+         height: 32px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconsnapchat{
+		 width: 32px; 
+         height: 32px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconyoutube{
+		 width: 32px; 
+         height: 32px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconstar_black{
+         width:23px; 
+         height: 23px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+         margin-right: -8px; 
+}
+.iconmianbaoxie{
+         width: 10px; 
+         height: 10px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconpay{
+		 width: 63px; 
+         height: 20px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-minus{
+		 width: 10px; 
+         height: 10px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-plus{
+		 width: 10px; 
+         height: 10px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconfacebook_product{
+         width: 21px;
+		 height: 21px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconpinterest_product{
+         width: 21px;
+		 height: 21px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconttww_product{
+         width: 21px;
+		 height: 21px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-close-big{
+         width: 15px;
+		 height: 15px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconicon-close-small{
+         width: 10px;
+		 height: 10px;
+         vertical-align: -0.15em;
+         fill: currentColor;
+         overflow: hidden;
+}
+.iconhamburg{
+    width: 27px;
+    height: 16.87px;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
