@@ -1,0 +1,109 @@
+@url=http://localhost:4000
+
+#注册
+POST {{url}}/user/api/v1/regist HTTP/1.1
+Content-Type: application/json
+
+{
+  "ufirst_name":"victoria",
+  "ulast_name":"lo",
+  "upwd":"123456",
+  "email":"victorialoyetong@163.com"
+}
+
+###
+#登录
+POST {{url}}/user/api/v1/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email":"741688310@qq.com",
+  "upwd":"123456"
+}
+
+###
+#个人中心
+get {{url}}/user/api/v1/account HTTP/1.1
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVpZCI6MX0sImlhdCI6MTU4MzI4NzExOCwiZXhwIjoxNTg1ODc5MTE4fQ.aPoWeSCRtA4_J8snNwmoeGh_3X-05J3Nh8Nvs_og2Jo
+
+###
+#退出登录
+get {{url}}/user/api/v1/logout HTTP/1.1
+Content-Type: application/json
+
+###
+#加入购物车
+POST {{url}}/user/api/v1/toCart HTTP/1.1
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVpZCI6MX0sImlhdCI6MTU4MDg4OTU0NiwiZXhwIjoxNTgzNDgxNTQ2fQ.xw13waOUk7cZdYvrVOvmDO3V5wxLdy-yJcSEuwE1qHg
+
+{
+  "category":"shadow palette",
+  "pid":1,
+  "name":"yes please!",
+  "pcount":5,
+  "price":"16.1",
+  "sale_price":"14.1"
+}
+
+###
+#查看购物车
+
+GET {{url}}/user/api/v1/showCart HTTP/1.1
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVpZCI6MX0sImlhdCI6MTU4MzI4NzExOCwiZXhwIjoxNTg1ODc5MTE4fQ.aPoWeSCRtA4_J8snNwmoeGh_3X-05J3Nh8Nvs_og2Jo
+
+###
+#删除购物车商品
+
+DELETE {{url}}/user/api/v1/deleteItem HTTP/1.1
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVpZCI6MX0sImlhdCI6MTU4MDg4OTU0NiwiZXhwIjoxNTgzNDgxNTQ2fQ.xw13waOUk7cZdYvrVOvmDO3V5wxLdy-yJcSEuwE1qHg
+
+{
+  "pid":2
+}
+
+###
+#加入心愿单
+POST {{url}}/user/api/v1/addWishlist HTTP/1.1
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVpZCI6MX0sImlhdCI6MTU4MDg5MjAyNywiZXhwIjoxNTgzNDg0MDI3fQ.VCmn45en0CPgU9EXQQ802AcVgq4o2CfeYlaGj3Jmx_Y
+
+{
+  "pid":1
+}
+
+###
+#查看心愿单
+
+GET {{url}}/user/api/v1/showWishlist HTTP/1.1
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVpZCI6MX0sImlhdCI6MTU4MDg5MjAyNywiZXhwIjoxNTgzNDg0MDI3fQ.VCmn45en0CPgU9EXQQ802AcVgq4o2CfeYlaGj3Jmx_Y
+
+###
+#删除心愿单商品
+DELETE {{url}}/user/api/v1/deleteWishlist HTTP/1.1
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVpZCI6MX0sImlhdCI6MTU4MDg5MjAyNywiZXhwIjoxNTgzNDg0MDI3fQ.VCmn45en0CPgU9EXQQ802AcVgq4o2CfeYlaGj3Jmx_Y
+
+{
+  "pid":1
+}
+
+###
+#更新购物车商品数量
+POST {{url}}/user/api/v1/updateCart HTTP/1.1
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVpZCI6MX0sImlhdCI6MTU4MzI4NzExOCwiZXhwIjoxNTg1ODc5MTE4fQ.aPoWeSCRtA4_J8snNwmoeGh_3X-05J3Nh8Nvs_og2Jo
+
+{
+  "cid":3,
+  "pid":1,
+  "pcount":4
+}
+
+
+
+
