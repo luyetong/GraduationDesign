@@ -1,17 +1,17 @@
 <template>
     <main class="homepage">
         <div class="shopify-section">
-            <article class="banner-a-wrap">
-                <router-link to="">
-                    <img src="../assets/img/rainbow_large.jpg" alt="">
-                </router-link>
-            </article>
+            <el-carousel :interval="5000" arrow="always" class="carousel-bg" height="500px">
+                <el-carousel-item v-for="(item,i) in bgImg" :key="i">
+                    <img :src="item" alt="">
+                </el-carousel-item>
+            </el-carousel>
         </div>
         <div class="shopify-section">
             <article class="bestseller">
                 <div class="bestseller-title">
                     <h3 class="section_title_sidelined">
-                        <span>RainbowLand</span>
+                        <span>Lips</span>
                     </h3>
                 </div>
                 <div class="bestseller-container" id="bestseller-container" >
@@ -219,6 +219,11 @@
 export default {
     data() {
         return {
+            bgImg:[
+                require('../assets/img/background/Dior.webp'),
+                require('../assets/img/background/BobbiBrown.webp'),
+                require('../assets/img/background/rainbow_large.jpg')
+            ],
             colours:[
                 {cimg:require('../assets/img/colours/COLOUR ME HAPPY.jpg'),
                 cname:'She\'s a Rainbow',
@@ -296,6 +301,13 @@ export default {
 </script>
 <style scoped>
 .homepage .shopify-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.homepage .carousel-bg img{
+    object-fit: cover;
+    height: 500px;
     width: 100%;
 }
 .homepage .banner-a-wrap{
