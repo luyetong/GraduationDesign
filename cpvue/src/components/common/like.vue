@@ -1,7 +1,7 @@
 <template>
   <div class="wishlist_container">
     <button class="wishlist_action" @click="isLike">
-      <div class="wishllist_image" :class="changeLike"></div>
+      <div class="wishllist_image hvr-pulse-grow" :class="changeLike"></div>
     </button>
   </div>
 </template>
@@ -18,13 +18,13 @@ export default {
     }
   },
   props:[
-    
     "products",
     "i"
   ],
   methods: {
     isLike(){
-      if(this.isLogin){
+      var isLogin = localStorage.getItem("isLogin")
+      if(isLogin){
         if(this.changeLike.remove_wishlist){
           this.changeLike.add_wishlist = true
           this.changeLike.remove_wishlist = false
@@ -36,32 +36,40 @@ export default {
         }
       }else{
         this.$router.push('/login')
+        localStorage.removeItem("isLogin")
       }
     },
     addWishlist(){
       var path = this.$store.state.path
-      if(path === '/eyepalettes'){
+      if(path === '/eyepalettes' || path === '/lips'){
         var {pid} = this.products[this.i]
       }else{
         var {pid} = this.product
       }
       var data = {pid}
-      this.setAddWishLishInfo(data)
+      funs.getAddWishlist(data,result=>{
+        var wishList = result.data.wishList
+        localStorage.setItem('wishListItems',JSON.stringify(wishList))
+      })
     },
     removeWishlish(){
       var path = this.$store.state.path
-      if(path === '/eyepalettes'){
+      if(path === '/eyepalettes'|| path === '/lips'){
         var {pid} = this.products[this.i]
       }else{
         var {pid} = this.product
       }
-      this.setRemoveWishListInfo(pid)
+      funs.getRemoveWishlist(pid,result=>{
+        var wishListItems = result.data.wishList
+        console.log(wishListItems)
+        localStorage.setItem('wishListItems',JSON.stringify(wishListItems))
+      })
+      // this.setRemoveWishListInfo(pid)
     },
     isLoad(){
-      this.setWishlistInfo()
-      var wishList = this.wishList
-      var path = this.$store.state.path
-      if(path === '/eyepalettes'){
+      var wishList = JSON.parse(localStorage.getItem('wishListItems'))
+      var path = this.$route.path
+      if(path === '/eyepalettes'|| path === '/lips'){
         var {pid} = this.products[this.i]
       }else{
         var {pid} = this.product
@@ -75,20 +83,20 @@ export default {
         }
       }
     },
-    lateLoad(){
-      let changeThis = this
-      setTimeout(function(){
-        changeThis.isLoad()
-      },300)
-    },
+    // lateLoad(){
+    //   let changeThis = this
+    //   setTimeout(function(){
+    //     changeThis.isLoad()
+    //   },300)
+    // },
     ...mapMutations(['setAddWishLishInfo','setRemoveWishListInfo','setWishlistInfo'])
   },
   computed: {
-    ...mapState(['wishList','product','isLogin'])
+    ...mapState(['wishList','product'])
   },
   created() {
-    this.lateLoad()
-    // this.isLoad()
+    // this.lateLoad()
+    this.isLoad()
   },
 }
 </script>

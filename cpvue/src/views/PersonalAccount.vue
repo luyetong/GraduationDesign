@@ -84,7 +84,7 @@ export default {
     wishlishItem
   },
   computed: {
-    ...mapState(['personalinfo','activeName'])
+    ...mapState(['personalinfo','activeName','isLogin'])
   },
   created() {
     this.$store.commit('setPersonalInfo')
@@ -95,11 +95,14 @@ export default {
       funs.getLogout(result=>{
         if(result.data.code === 200){
           localStorage.removeItem('token')
-          this.$store.commit('setIsLogin', false)
+          localStorage.removeItem('isLogin')
+          localStorage.removeItem('wishListItems')
+          this.setIsLogin(false)
           this.$router.push('/login')
         }
       })
     },
+    ...mapMutations(['setIsLogin'])
   }
 }
 </script>

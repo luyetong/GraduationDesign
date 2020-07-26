@@ -152,6 +152,46 @@ export default {
         .catch(err=>{
             console.log(err)
         })
-    }
-
+    },
+    //14.获取口红列表
+    getLips(callback) {
+        axios.get("product/lips")
+            .then((result) => {
+                callback(result)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    },
+    //15.获取主页商品
+    getMainProducts(callback) {
+        axios.get("product/mainProducts")
+            .then((result) => {
+                callback(result)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    },
+    //16.搜索商品
+    getSearchProducts(searchContent, callback) {
+        var obj = {searchContent}
+        axios.get('product//searchProducts', {params: obj})
+            .then((result) => {
+                callback(result)
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+    },
+    //17.获取唇油列表
+    getLiquids(callback) {
+        axios.get("product/liquid")
+            .then((result) => {
+                callback(result)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    },
 }

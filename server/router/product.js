@@ -8,9 +8,8 @@ var router = express.Router()
 router.get('/eyepalettes', (req, res) => {
  // 获取数据
   var obj = req.query
-  console.log(obj)
   //查询数据库
-  var sql = `select * from cp_product`
+  var sql = `select * from cp_product where family_id=1`
   pool.query(sql,(err,result)=>{
     if (err) throw err
     if (result.length > 0 ){
@@ -38,4 +37,63 @@ router.get('/details', (req, res) => {
   })
 })
 
+// 3.口红商品列表
+router.get('/lips', (req, res) => {
+  // 获取数据
+   var obj = req.query
+   //查询数据库
+   var sql = `select * from cp_product where family_id=2`
+   pool.query(sql,(err,result)=>{
+     if (err) throw err
+     if (result.length > 0 ){
+       res.send({ code: 1, lips: result })
+     }else{
+       res.send({ code: -1, msg: `没有该商品`})
+     }
+   })
+ })
+ // 4.口红商品列表
+router.get('/liquid', (req, res) => {
+  // 获取数据
+   var obj = req.query
+   //查询数据库
+   var sql = `select * from cp_product where family_id=3`
+   pool.query(sql,(err,result)=>{
+     if (err) throw err
+     if (result.length > 0 ){
+       res.send({ code: 1, lips: result })
+     }else{
+       res.send({ code: -1, msg: `没有该商品`})
+     }
+   })
+ })
+ // 5.主页商品列表
+router.get('/mainProducts', (req, res) => {
+  // 获取数据
+   var obj = req.query
+   //查询数据库
+   var sql = `select * from cp_product where family_id=2 and main_id=1`
+   pool.query(sql,(err,result)=>{
+     if (err) throw err
+     if (result.length > 0 ){
+       res.send({ code: 1, mainLips: result })
+     }else{
+       res.send({ code: -1, msg: `没有该商品`})
+     }
+   })
+ })
+ //6.查询商品
+ router.get('/searchProducts',(req,res) => {
+   //获取数据
+  var searchContent = req.query.searchContent
+  var searchSql = `select * from cp_product where name like '%${searchContent}%' or category like '%${searchContent}%'`
+  pool.query(searchSql, [searchContent], (err, result) => {
+    if (err) throw err
+    if(result.length>0){
+      res.send({ code: 1, product: result })
+    } else {
+      res.send({ code: -1, msg: `没有该商品` })
+    }
+  })
+ })
 module.exports = router

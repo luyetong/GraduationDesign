@@ -14,7 +14,8 @@ export default new Vuex.Store({
     isLike:false,
     wishList:[],   //心愿单信息
     product:{} , //商品详情信息
-    isOpenCart:{display:'none'}
+    isOpenCart:{display:'none'},
+    searchProducts:[]
   },
   mutations: {
     //1.改变登录状态
@@ -45,15 +46,18 @@ export default new Vuex.Store({
       })
     },
     //6.加载心愿单信息
-    setWishlistInfo(state){
+    setWishlistInfo(state, wishListItems){
       funs.getShowWishlist(result=>{
         state.wishList = result.data.wishList
+        wishListItems = state.wishList
+        console.log(wishListItems)
       })
     },
     //7.添加心愿单信息
     setAddWishLishInfo(state,data){
       funs.getAddWishlist(data,result=>{
         state.wishList = result.data.wishList
+        console.log(state.wishList)
       })
     },
     //8.删除心愿单信息
@@ -66,10 +70,15 @@ export default new Vuex.Store({
     setIsCartOpen(state,status){
       state.isOpenCart.display = status
     },
-    //改变心愿单信息
+    //10.改变心愿单信息
     setIsLike (state , isLike) {
       state.isLike = isLike
     },
+    //11.加载搜索的商品信息
+    setSearchProducts (state, searchProducts){
+      state.searchProducts = searchProducts
+      console.log(state.searchProducts)
+    }
   },
   actions: {
   }

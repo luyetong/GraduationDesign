@@ -11,7 +11,7 @@
               <div class="owl-stage">
                 <div class="owl-item" v-for="(item,k) of items" :key="k">
                   <li class="collection-tabs_item">
-                    <a href="#">{{item}}</a>
+                    <router-link to="">{{item}}</router-link>
                   </li>
                 </div>
                 <div class="clear"></div>
@@ -22,23 +22,23 @@
         <div class="collectioncontainer">
           <div class="productblock" v-for="(p,i) of products" :key="i">
             <div class="imagecontainer">
-              <router-link :to="'/details/'+p.href.split('=')[1]">
+              <router-link :to="'/details/'+p.pid">
                 <div class="image-swapper">
-                  <img :src="'http://localhost:4000/' + p.pic" alt />
+                  <img :src="'http://localhost:4000/' + p.pic" class="hvr-grow-shadow" />
                 </div>
               </router-link>
             </div>
             <div class="product-info" id="info-container">
               <like :i="i" :products="products"></like>
               <div class="product-info-inner">
-                <a href="###" class="prod-info-wrap">
+                <div class="prod-info-wrap">
                   <div class="prod-title-wrap">
                     <div id="prod-title-price">{{p.name}}</div>
                     <p id="prod-type">{{p.category}}</p>
                   </div>
                   <div class="price">
-                    <span class="price-og">${{p.sale_price}}</span>
-                    ${{p.price}}
+                    <span class="price-og" v-show="p.sale_price?true:false">¥{{p.sale_price}}</span>
+                    ¥{{p.price}}
                   </div>
                   <div class="yotpo">
                     <el-rate
@@ -49,17 +49,16 @@
                     score-template="{value}">
                   </el-rate>
                   </div>
-                </a>
+                </div>
                 <form action>
-                  <addToBag @click.native="addTocart(i)"></addToBag>
+                  <addToBag class="add-tobag" @click.native="addTocart(i)"></addToBag>
                   <button class="quick-view">Quickview</button>
                 </form>
               </div>
             </div>
           </div>
-          
-          <div class="nomoreproducts">No more products to show</div>
         </div>
+        <div class="nomoreproducts">No more products to show</div>
       </section>
     </div>
   </main>
@@ -84,7 +83,7 @@ export default {
     methods: {
       load() {
         funs.getEyePalettes(result=>{
-          // console.log(result.data.eyepalettes)
+          console.log(result.data.eyepalettes)
           this.products = result.data.eyepalettes 
         })
       },
@@ -165,10 +164,11 @@ export default {
 .collectioncontainer {
   padding: 0 10px;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 .collectioncontainer .productblock {
   box-sizing: border-box;
-  float: left;
   position: relative;
   padding: 0 10px;
 }
@@ -186,7 +186,7 @@ export default {
   }
 }
 @media screen and (min-width: 768px) {
-  .collectioncontainer .product-info-inner form input[type="submit"] {
+  .add-tobag{
     width: 48%;
   }
   .collectioncontainer
@@ -205,6 +205,7 @@ export default {
     color: #333;
     border: solid 1px #333;
     cursor: pointer;
+    outline-color: #d9ccf1;
   }
   .collectioncontainer
     .productblock
@@ -217,7 +218,7 @@ export default {
   }
 }
 @media screen and (max-width: 768px) {
-  .collectioncontainer .product-info-inner form input[type="submit"] {
+  .add-tobag{
     width: 100%;
   }
   .collectioncontainer
@@ -325,7 +326,7 @@ input[type="submit"]:hover {
   color: #fff;
 }
 
-.collectioncontainer .nomoreproducts {
+.nomoreproducts {
   clear: both;
   text-align: center;
   padding-bottom: 40px;
@@ -335,7 +336,7 @@ input[type="submit"]:hover {
   font-style: italic;
   font-weight: bold;
 }
-.collectioncontainer .nomoreproducts:after {
+.nomoreproducts:after {
   content: "";
   display: block;
   width: 250px;

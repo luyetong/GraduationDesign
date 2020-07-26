@@ -12,21 +12,22 @@
         </el-button>
       </div>
       <!-- 侧边导航栏 -->
-      <header-navigation :style="navigationStyle" @toTheme='toTheme'></header-navigation>
+      <header-navigation :style="navigationStyle" @toTheme='toTheme' @toHome='toHome'></header-navigation>
       <div class="header-logo">
-        <el-button type='text'>
-          <svg class="icon-logo" aria-hidden="true">
+        <el-button type='text' @click="LogotoHome">
+          <!--<svg class="icon-logo" aria-hidden="true">
             <use xlink:href="#iconlogo"></use>
-          </svg>
+          </svg>-->
+          <img src="../assets/img/top_logo.jpg" alt="" class="hvr-grow-shadow">
         </el-button>
       </div>
       <div class="header-icon">
-        <el-button type='text' @click="search">
+        <el-button type='text' @click="search" class="hvr-float">
           <svg class="icon-search" aria-hidden="true">
             <use xlink:href="#iconicon-search-m"></use>
           </svg>
         </el-button>
-        <el-dropdown class="header-dropdown">
+        <el-dropdown class="header-dropdown hvr-float">
           <span class="el-dropdown-link">
             <svg class="icon-account" aria-hidden="true">
               <use xlink:href="#iconicon-account"></use>
@@ -59,7 +60,7 @@
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <el-button type='text' @click="showbag">
+        <el-button type='text' @click="showbag" class="hvr-float">
           <svg class="icon-bag" aria-hidden="true">
             <use xlink:href="#iconicon-bag-m"></use>
           </svg>
@@ -99,16 +100,20 @@ export default {
     window.addEventListener('scroll', this.scrollTop);
   },
   methods: {
+    LogotoHome(){
+      this.$router.push('/')
+    },
     toAccount(item){
       // console.log(item)
       var path = this.$store.state.path
+      var isLogin = localStorage.getItem("isLogin")
       // 保存用户想要访问的path
       console.log('item', item)
       this.$store.commit('setAccountItem', item)
       if(path !== '/account'){
         this.$router.push("/account")
       }
-      if(this.$store.state.isLogin===false){
+      if(isLogin===false){
         this.$router.push('/login')
       }
     },
@@ -135,6 +140,10 @@ export default {
     toTheme(){
         this.navigationStyle.display='none'
         this.isOpen = true
+    },
+    toHome(){
+      this.navigationStyle.display='none'
+      this.isOpen = true
     },
     //打开搜索框
     search(){
@@ -188,7 +197,10 @@ export default {
 }
 #header-top .main-header .header-logo{
   position: absolute;
-  left: 37%;
+  left: 36%;
+}
+#header-top .main-header .header-logo img{
+  width: 350px;
 }
 #header-top .globalbanner{
   width: 100%;

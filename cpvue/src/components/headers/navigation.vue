@@ -5,10 +5,10 @@
 				<div class="navigation_container">
 					<ul class="navigation_list" id="back" v-if='isMore==false'>
 						<button class="navigation_list--show-more" @click="more">
-							<li  class="navigation_list--header">Colourpop</li>
+							<li  class="navigation_list--header">Make Up</li>
                         </button>
                         <li class="navigation_list--header" v-for="(nav,i) of navs1" :key='i'>
-                            <a href="javascript:;">{{nav}}</a>
+                            <router-link to="" @click.native="toHome(i)">{{nav}}</router-link>
                         </li>
                     </ul>
                     <ul class="navigation_list" id="more" v-else>
@@ -29,7 +29,7 @@ export default {
     name:'HeaderNavigation',
     data(){
         return{
-            navs1:['Sol Body','Fourth Ray Beauty','New Arrivals','Best Sellers','Last Call'],
+            navs1:['Fragrance','Fourth Ray Beauty','New Arrivals','Best Sellers','Last Call','Home'],
             navs2:['Lips','eyes','face','glitter','brushes','set & bundles','build your own palette',
             'collabs','cp fam','sale'],
             isMore:false
@@ -43,17 +43,21 @@ export default {
             this.isMore=false
         },
         toTheme(i){
-            if(i==0){
-                console.log('这是lip')
-                this.$router.push({path: '/index'})
+            if(i===0){
+                this.$router.push({path: '/lips'})
                 this.$emit("toTheme")
             }
-            if(i==1){
+            if(i===1){
                 this.$router.push({path: '/eyepalettes'})
-                console.log('这是eyepalettes')
                 this.$emit('toTheme')
             }
             
+        },
+        toHome(i){
+            if(i===5){
+                this.$router.push({path:'/'})
+                this.$emit('toHome')
+            }
         }
     }
 }

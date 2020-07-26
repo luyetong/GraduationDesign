@@ -76,6 +76,7 @@
 </template>
 <script>
 import funs from "../funs.js"
+import { mapState, mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -176,7 +177,7 @@ export default {
           funs.getLogin(data, result=>{
             console.log(result)
             if(result.data.code===200){
-              this.$store.commit('setIsLogin', true)
+              localStorage.setItem("isLogin",this.isLogin)
               this.$router.push('/account')
             }else{
               this.errorMsg = true
@@ -196,14 +197,19 @@ export default {
       funs.getLogin(data, result=>{
         console.log(result)
         if(result.data.code===200){
-          this.$store.commit('setIsLogin', true)
+          this.setIsLogin(true)
+          localStorage.setItem("isLogin",this.isLogin)
           this.$router.push('/account')
         }else{
           this.errorMsg = true
           clearInput()
         }
       })
-    }
+    },
+    ...mapMutations(['setIsLogin'])
+  },
+  computed: {
+    ...mapState(['isLogin'])
   }
 }
 </script>

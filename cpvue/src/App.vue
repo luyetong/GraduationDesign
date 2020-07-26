@@ -5,7 +5,12 @@
     <myfooter></myfooter>
   </div>
 </template>
-
+<script>
+import * as Hover from './utils/hover.css'
+export default {
+	
+}
+</script>
 <style>
 *{margin: 0px; padding: 0px; box-sizing: border-box}
 a{text-decoration: none;color: #111}

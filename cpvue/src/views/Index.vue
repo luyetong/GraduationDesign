@@ -14,44 +14,46 @@
                         <span>Lips</span>
                     </h3>
                 </div>
-                <div class="bestseller-container" id="bestseller-container" >
-                    <ul @touchmove="move" @touchstart="start" @touchend="end"  class="bestseller-items" id="items" :style="{marginLeft:drag.left+'px'}" >
-                        <li class="bestseller-item" v-for="(c,i) of colours" :key="i">
-                            <div class="item-img">
-                                <img :src="c.cimg" alt="">
-                            </div>
+                <div class="bestseller-container">
+                    <ul class="bestseller-items">
+                        <li class="bestseller-item" v-for="(m,i) of mainProducts" :key="i">
+                            <router-link :to="{ name: 'details' , params:{pid:m.pid}}">
+                                <div class="item-img">
+                                    <img :src="'http://localhost:4000/' + m.pic" alt="" class="hvr-grow-shadow">
+                                </div>
+                            </router-link>
                             <div class="item-detail">
+                                <like class="wishlist-container" :i="i" :products="mainProducts"></like>
                                 <div class="item-name">
-                                    <h6 class="carousel-prod-title">{{c.cname}}</h6>
-                                    <div class="wishlist-container">
+                                    <h6 class="carousel-prod-title">{{m.name}}</h6>
+                                    <!--<div class="wishlist-container">
                                         <div class="wishllist_image">   
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
-                                <p class="carousel-prod-type">{{c.prod_type}}</p>
-                                <p class="carousel-prod-price price">${{c.price}}</p>
-                                <div class="carousel-prod-description">{{c.description}}
-                                </div>
+                                <p class="carousel-prod-type">{{m.category}}</p>
+                                <p class="carousel-prod-price price">¥{{m.price}}</p>
+                                <!--<div class="carousel-prod-description">{{c.description}}
+                                </div>-->
                             </div>
-                            <router-link to="" class="item-addtobag">
-                                add to bag
-                            </router-link>
+                            <addToBag @click.native="addTocart(i)"></addToBag>
                         </li>
                     </ul>
                 </div>
+                <div class="bestseller-container"></div>
             </article>
         </div>
         <div class="shopify-section">
             <article class="split-banner">
-                <router-link to="" class="split-banner_item">
-                    <img src="../assets/img/splite_left.webp" alt="">
+                <router-link :to="{name:'eyepalettes'}" class="split-banner_item">
+                    <img src="../assets/img/splite_left.webp" alt="" class="hvr-grow-shadow">
                     <div class="split-banner_text-block">
                         <h3>better than a pot of glod</h3>
                         <p>shop she's a rainbow palette</p>
                     </div>
                 </router-link>
                 <router-link to="" class="split-banner_item">
-                    <img src="../assets/img/splite_right.jpg" alt="">
+                    <img src="../assets/img/splite_right.jpg" alt="" class="hvr-grow-shadow">
                     <div class="split-banner_text-block">
                         <h3>Moisturizing Strawberry Face Milk</h3>
                         <p>Shop Fourth ray beauty</p>
@@ -69,19 +71,19 @@
         <div class="shopify-section">
             <article class="image-blocks">
                 <router-link to="" class="image-blocks_container">
-                    <img src="../assets/img/HP_PALETTES.jpg" alt="">
+                    <img src="../assets/img/HP_PALETTES.jpg" alt="" class="hvr-grow-shadow">
                     <div class="image-block_container-text">
                         <h3>shop palettes</h3>
                     </div>
                 </router-link>
                 <router-link to="" class="image-blocks_container">
-                    <img src="../assets/img/sol/HP_BYOP.webp" alt="">
+                    <img src="../assets/img/sol/HP_BYOP.webp" alt="" class="hvr-grow-shadow">
                     <div class="image-block_container-text">
                         <h3>build your own oalette</h3>
                     </div>
                 </router-link>
                 <router-link to="" class="image-blocks_container">
-                    <img src="../assets/img/Fourth_Ray_hp_CP.webp" alt="">
+                    <img src="../assets/img/Fourth_Ray_hp_CP.webp" alt="" class="hvr-grow-shadow">
                     <div class="image-block_container-text">
                         <h3>shop fourth ray beauty</h3>
                     </div>
@@ -91,19 +93,19 @@
         <div class="shopify-section">
             <article class="image-blocks">
                 <router-link to="" class="image-blocks_container">
-                    <img src="../assets/img/SSS.jpg" alt="">
+                    <img src="../assets/img/SSS.jpg" alt="" class="hvr-grow-shadow">
                     <div class="image-block_container-text">
                         <h3>shop palettes</h3>
                     </div>
                 </router-link>
                 <router-link to="" class="image-blocks_container">
-                    <img src="../assets/img/sol/GLOSS.jpg" alt="">
+                    <img src="../assets/img/sol/GLOSS.jpg" alt="" class="hvr-grow-shadow">
                     <div class="image-block_container-text">
                         <h3>build your own oalette</h3>
                     </div>
                 </router-link>
                 <router-link to="" class="image-blocks_container">
-                    <img src="../assets/img/DISNEY.jpg" alt="">
+                    <img src="../assets/img/DISNEY.jpg" alt="" class="hvr-grow-shadow">
                     <div class="image-block_container-text">
                         <h3>shop fourth ray beayty</h3>
                     </div>
@@ -129,7 +131,7 @@
                             <h2>make with love in california</h2>
                             <h3>It's our mission to redefine luxury beauty by creating amazing products at prices that don't break the bank. Dedicated to newness at lightning speed, we imagine, develop, test, and manufacture all under one roof. We pride ourselves on being cruelty-free, wallet-friendly, and keeping our customers at the center of our world
                             </h3>
-                            <router-link class="btn_banner" to=""="">WATCH NOW</router-link>
+                            <router-link class="btn_banner" to="">WATCH NOW</router-link>
                         </div>
                     </div>
                 </div>
@@ -216,6 +218,10 @@
     </main>
 </template>
 <script>
+import funs from '../funs.js'
+import like from "../components/common/like"
+import addToBag from '../components/common/addToBag'
+import cartFuns from '../components/shoppingcart/cartFuns'
 export default {
     data() {
         return {
@@ -224,38 +230,7 @@ export default {
                 require('../assets/img/background/BobbiBrown.webp'),
                 require('../assets/img/background/rainbow_large.jpg')
             ],
-            colours:[
-                {cimg:require('../assets/img/colours/COLOUR ME HAPPY.jpg'),
-                cname:'She\'s a Rainbow',
-                prod_type:'Palette',
-                price:40,
-                description:'Get endless looks with this new RAINBOW palette!'},
-                {cimg:require('../assets/img/colours/COLOUR ME HAPPY.jpg'),
-                cname:'She\'s a Rainbow',
-                prod_type:'Palette',
-                price:40,
-                description:'Get endless looks with this new RAINBOW palette!'},
-                {cimg:require('../assets/img/colours/COLOUR ME HAPPY.jpg'),
-                cname:'She\'s a Rainbow',
-                prod_type:'Palette',
-                price:40,
-                description:'Get endless looks with this new RAINBOW palette!'},
-                {cimg:require('../assets/img/colours/COLOUR ME HAPPY.jpg'),
-                cname:'She\'s a Rainbow',
-                prod_type:'Palette',
-                price:40,
-                description:'Get endless looks with this new RAINBOW palette!'},
-                {cimg:require('../assets/img/colours/COLOUR ME HAPPY.jpg'),
-                cname:'She\'s a Rainbow',
-                prod_type:'Palette',
-                price:40,
-                description:'Get endless looks with this new RAINBOW palette!'},
-                {cimg:require('../assets/img/colours/COLOUR ME HAPPY.jpg'),
-                cname:'She\'s a Rainbow',
-                prod_type:'Palette',
-                price:40,
-                description:'Get endless looks with this new RAINBOW palette!'},
-            ],
+            mainProducts:[],
             drag:{
                 left:20,
                 start:0,
@@ -263,43 +238,41 @@ export default {
             }
         }
     },
+    components:{
+        addToBag,
+        like
+    },
     methods:{
-        move(e){
-            var width = document.body.clientWidth
-            this.drag.left=parseInt(e.changedTouches[0].pageX)+this.drag.end-this.drag.start;
-            if(this.drag.left >= 20){
-                this.drag.left = 20;
-                return
-            }
-            if(this.drag.left <= -1500 + width){
-                 this.drag.left = -1500+width 
-                 return
-            } 
-        },
-        start(e){
-           this.drag.start = parseInt(e.changedTouches[0].pageX)
-        },
-        end(){
-          this.drag.end=this.drag.left;
-        },
         toDetails(){
             this.$router.push("/details/1")
+        },
+        loadMainProducts() {
+            funs.getMainProducts(result => {
+                this.mainProducts = result.data.mainLips
+            })
+        },
+        addTocart(i){
+        var productInfo = this.mainProducts[i]
+        cartFuns.addToCart(productInfo)
         }
     },
-    // mounted() {
-    //     var container = document.getElementById('bestseller-container')
-    //     container.addEventListener('mousedown', (e) => {
-    //         var target = e.target
-    //         var ul = document.getElementById('items')
-    //         var x = e.clientX
-    //         console.log(x)
-    //         // console.log()
-    //     })
-    // },
+    created() {
+        this.loadMainProducts()
+    }
     
 }
 </script>
 <style scoped>
+@media screen and (min-width: 1220px) {
+  .bestseller-container .bestseller-items li{
+    width: 15%;
+  }
+}
+@media screen and (max-width: 1220px) {
+  .bestseller-container .bestseller-items li{
+    width: 28%;
+  }
+}
 .homepage .shopify-section {
     width: 100%;
     display: flex;
@@ -316,6 +289,7 @@ export default {
 }
 .homepage .shopify-section .bestseller{
     width: 100%;
+    margin-bottom: 15px;
 }
 .bestseller .bestseller-title{
     text-align: center;
@@ -357,22 +331,23 @@ h3.section_title_sidelined span:after {
 }
 .bestseller .bestseller-container ul{
     display: flex;
-    width: 1500px;
-    
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .bestseller-container .bestseller-items li{
-    width: 230px;
     display: flex;
     flex-direction: column;
-    margin-right: 20px;
 }
 .bestseller-item .item-img, .item-img img{
     width: 100%;
 }
 .bestseller-item .item-detail{
     width: 100%;
+    height: 125px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
  .item-detail .item-name{
     display: flex;
@@ -380,29 +355,22 @@ h3.section_title_sidelined span:after {
     justify-content: space-between;
  }
  .item-detail .item-name h6{
-    width: 120px;
     font-size: 0.9em;
     font: 0.8em "VisbyCFExtraBold","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: bolder;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     max-width: 90%;
-    white-space: pre-wrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
  }
- .item-detail .item-name .wishlist-container{
-     width: 20px;
+ .wishlist-container{
+     right: 10px;
+     top: 12px;
  }
- /* 收藏夹 */
- .wishlist-container .wishllist_image{
-     width: 100%;
-     background-image: url('../assets/img/icon/xin.png');
-     background-size: 20px 20px;
-    width: 20px;
-    height: 20px;
-}
-.wishlist-container .wishllist_image:hover{
-    background-image: url('../assets/img/icon/xin_black.png')
-}
 /* 加入购物车按钮 */
 .item-addtobag{
     width: 100%;

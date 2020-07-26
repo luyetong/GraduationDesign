@@ -36,6 +36,28 @@ CREATE TABLE cp_product(
 	review DECIMAL(10,2)
 );
 
+/**口红商品表**/
+CREATE TABLE cp_lips(
+	pid INT PRIMARY KEY AUTO_INCREMENT,
+	family_id INT,
+	main_id INT,
+	product_id INT,
+	name VARCHAR(64),
+	title VARCHAR(255),
+	subtitle VARCHAR(255),
+	category VARCHAR(32),
+	price DECIMAL(10,2),
+	sale_price DECIMAL(10,2),
+	finish VARCHAR(64),
+	shade  VARCHAR(128),
+	net_weigth VARCHAR(32),
+	tips VARCHAR(255),
+	ingredients Text,
+	detail Text,
+	pic VARCHAR(128),
+	href VARCHAR(128),
+	review DECIMAL(10,2)
+);
 /**购物车列表**/
 CREATE TABLE cp_cart(
 	cid INT PRIMARY KEY AUTO_INCREMENT,
@@ -235,7 +257,7 @@ big cocktails: synthetic fluorphlogopite, talc, boron nitride, zing stearate, la
 	'The perfect nude palette doesn’t exi- ',
 	'Look no further. Warm nudes, every day shades, your makeup routine’s sidekick is here! With 12 shades, ranging from cool to warm, matte to metallic, you and this palette will be inseparable.',
 	'shadow palette',
-	'16',
+  '16',
 	NULL,
 	'matte, metallic',
 	'neutrals, golds, browns, oranges/corals',
@@ -247,7 +269,133 @@ big cocktails: synthetic fluorphlogopite, talc, boron nitride, zing stearate, la
 	'img/eye-palettes/Double_Entendre.webp',
 	'products.html?pid=8',
 	5
+),
+(
+	9,2,2,1,
+	'DIOR ADDICT LACQUER STICK',
+	'打造本季4个至潮色彩系列：梦幻、前卫、经典与不羁',
+	null,
+	'lips',330,null,
+	'光泽/红色',
+	'固态','3.2g,740,可乐部落',
+	'null',
+	'迪奥独家臻选5款非凡轻盈的精华油——这些精华油拥有近乎玻璃般的折光率，能显著提升光采，令唇膏尽致闪耀，以及舒悦持久的蜜蜡',
+	'全新Dior迪奥魅惑釉唇膏，以全新亮漆黑管外壳精美包装，闪耀霓虹粉色色彩。唇釉的非凡色彩与闪耀光泽融入固体唇膏中',
+	'img/Lips/Dior01.jpg',
+	'products.html?pid=9',
+	3
+),
+(
+	10,2,2,2,
+	'DIOR ADDICT STELLAR SHINE',
+	'打造本季4个至潮色彩系列：梦幻、前卫、经典与不羁',
+	null,
+	'lips',330,null,
+	'细闪/粉色',
+	'固态','3.2g,976',
+	'null',
+	'迪奥独家臻选5款非凡轻盈的精华油——这些精华油拥有近乎玻璃般的折光率，能显著提升光采，令唇膏尽致闪耀，以及舒悦持久的蜜蜡',
+	'全新Dior迪奥魅惑釉唇膏，以全新亮漆黑管外壳精美包装，闪耀霓虹粉色色彩。唇釉的非凡色彩与闪耀光泽融入固体唇膏中',
+	'img/Lips/Dior02.jpg',
+	'products.html?pid=10',
+	2
+),
+(
+	11,2,2,3,
+	'LANCOME LABSOLU ROUGE',
+	'全新兰蔻菁纯丝绒雾面唇膏，非凡哑光质地，带来全新妆感，高饱和，持久显色',
+	null,
+	'lips',270,null,
+	'红色',
+	'固态','3.4g, 196',
+	'null',
+	'迪奥独家臻选5款非凡轻盈的精华油——这些精华油拥有近乎玻璃般的折光率，能显著提升光采，令唇膏尽致闪耀，以及舒悦持久的蜜蜡',
+	'一抹显色，本色当红
+	无论白皮黄皮，都能轻松驾驭
+	三款质地，缤纷色号，轻松Hold住多种造型',
+	'img/Lips/Lancome01.jpg',
+	'products.html?pid=11',
+	5
+),
+(
+	12,2,2,4,
+	'LANCOME ABSOLU ROUGE RUBY CREAM',
+	'菁纯宝石唇膏，宝石般浓郁显色，宝石切面膏体，轻松勾勒精致唇妆。',
+	null,
+	'lips',270,null,
+	'光泽/红色',
+	'固态','02,鸽血红宝石（滋润版#196)',
+	'null',
+	'迪奥独家臻选5款非凡轻盈的精华油——这些精华油拥有近乎玻璃般的折光率，能显著提升光采，令唇膏尽致闪耀，以及舒悦持久的蜜蜡',
+	'一抹显色，本色当红
+	无论白皮黄皮，都能轻松驾驭
+	三款质地，缤纷色号，轻松Hold住多种造型',
+	'img/Lips/Lancome02.jpg',
+	'products.html?pid=12',
+	5
+),
+(
+	13,2,2,5,
+	'圣罗兰莹亮纯魅唇膏（圆管）YVES SAINT LAURENT ROUGE SHINE/VOLUPTE SHINE',
+	'迷人的色调赋予了双唇锦缎般的奢华色泽，唇膏均匀地涂抹于唇部，奶油质地丝般顺滑诱人',
+	null,
+	'lips',320,null,
+	'光泽/红色',
+	'固态','4.5g,12',
+	'null',
+	'迪奥独家臻选5款非凡轻盈的精华油——这些精华油拥有近乎玻璃般的折光率，能显著提升光采，令唇膏尽致闪耀，以及舒悦持久的蜜蜡',
+	'Super Shine无论何时何地，一切随性而为，肆意释放，生而闪耀
+	',
+	'img/Lips/YSL01.jpg',
+	'products.html?pid=13',
+	4
+),
+(
+	14,2,2,6,
+	'YSL ROUGE PUR COUTURE THE SLIM',
+	'点亮妆容，令妆容更美丽',
+	null,
+	'lips',335,null,
+	'光泽/红色',
+	'固态','2.2g，21 不羁复古红',
+	'null',
+	'迪奥独家臻选5款非凡轻盈的精华油——这些精华油拥有近乎玻璃般的折光率，能显著提升光采，令唇膏尽致闪耀，以及舒悦持久的蜜蜡',
+	'高定 VS 随性，一线之间，她敢于打破界限，她敢爱试探边界',
+	'img/Lips/YSL02.jpg',
+	'products.html?pid=14',
+	5
+),
+(
+	15,2,2,7,
+	'纪梵希高定香榭红丝绒唇膏GIVENCHY LE ROUGE DEEP VELVET',
+	'丝绒当红，美到窒息',
+	null,
+	'lips',345,null,
+	'哑光/多色',
+	'固态','3.4g,N37 朱砂砖红',
+	'null',
+	'迪奥独家臻选5款非凡轻盈的精华油——这些精华油拥有近乎玻璃般的折光率，能显著提升光采，令唇膏尽致闪耀，以及舒悦持久的蜜蜡',
+	'绝美红丝绒华服，高级丝绒哑光妆效，丝绒当红，美到爆炸！',
+	'img/Lips/Givenchy01.jpg',
+	'products.html?pid=15',
+	4.5
+),
+(
+	16,2,2,8,
+	'GIVENCHY ROUGE INTERDIT VINYL 18',
+	'赋予双唇异域诱惑感，打造惊艳高定妆容',
+	null,
+	'lips',320,null,
+	'哑光/紫色',
+	'固态','3.3g，18',
+	'null',
+	'舒悦持久的蜜蜡',
+	'如宝石般神秘而深邃，赋予双唇别具一格的异域诱惑',
+	'img/Lips/Givenchy02.jpg',
+	'products.html?pid=16',
+	3
 );
+
 
 /**心愿单列表**/
 CREATE TABLE cp_wishlist(

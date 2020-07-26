@@ -1,8 +1,9 @@
 <template>
-    <input type="submit" value="Add"/>
+    <!-- <input type="submit" value="Add"/>-->
+    <button>Add</button>
 </template>
 <style scoped>
-input[type="submit"] {
+button{
   font: 0.8em/1 "VisbyCFBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -15,8 +16,10 @@ input[type="submit"] {
   border-radius: 0;
   letter-spacing: 0.0625em;
   transition: all 0.2s ease;
+  outline-color: #d9ccf1;
+  background-color: transparent;
 }
-input[type="submit"]:hover {
+button:hover {
   background: #333;
   color: #fff;
 }

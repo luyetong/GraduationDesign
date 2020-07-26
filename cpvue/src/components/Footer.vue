@@ -14,63 +14,58 @@
 			<div class="footer_social-container">
 				<ul>
 					<li>
-						<a href="#" class="footer_social-facebook">
-							 <svg class="iconfacebook" aria-hidden="true">
+						<routerLink to=""  class="footer_social-facebook hvr-float">
+							  <svg class="iconfacebook" aria-hidden="true">
                           		<use xlink:href="#iconfacebook"></use>
-                   			 </svg>
-						</a>
+              	</svg>
+						</routerLink>
 					</li>
 					<li>
-						<a href="#" class="footer_social-facebook">
-							 <svg class="iconinstagram" aria-hidden="true">
+						<routerLink to=""  class="footer_social-facebook hvr-float">
+							  <svg class="iconinstagram" aria-hidden="true">
                           		<use xlink:href="#iconinstagram"></use>
-                   			 </svg>
-						</a>
+                </svg>
+						</routerLink>
 					</li>
 					<li>
-						<a href="#" class="footer_social-facebook">
+						<routerLink to=""  class="footer_social-facebook hvr-float">
 							 <svg class="iconttww" aria-hidden="true">
                           		<use xlink:href="#iconttww"></use>
                    			 </svg>
-						</a>
+						</routerLink>
 					</li>
 					<li>
-						<a href="#" class="footer_social-facebook">
+						<routerLink to=""  class="footer_social-facebook hvr-float">
 							 <svg class="iconsnapchat" aria-hidden="true">
                           		<use xlink:href="#iconsnapchat"></use>
                    			 </svg>
-						</a>
+						</routerLink>
 					</li>
 					<li>
-						<a href="#" class="footer_social-facebook">
+						<routerLink to=""  class="footer_social-facebook hvr-float">
 							 <svg class="iconyoutube" aria-hidden="true">
                           		<use xlink:href="#iconyoutube-copy"></use>
                    			 </svg>
-						</a>
+						</routerLink>
 					</li>
 				</ul>
 			</div>
 			<div class="footer_navigation-container">
 				<ul>
-					<li><a href="#">ABOUT US</a></li>
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">STUDENT DISCOUNT</a></li>
-					<li><a href="#">TERMS</a></li>
-					<li><a href="#">PRIVACY POLICY</a></li>
-					<li><a href="#">CONTACT US</a></li>
+					<li><routerLink to="" >ABOUT US</routerLink></li>
+					<li><routerLink to="" >FAQ</routerLink></li>
+					<li><routerLink to="" >STUDENT DISCOUNT</routerLink></li>
+					<li><routerLink to="" >TERMS</routerLink></li>
+					<li><routerLink to="" >PRIVACY POLICY</routerLink></li>
+					<li><routerLink to="" >CONTACT US</routerLink></li>
 				</ul>
 			</div>
 			<div class="foot_copyright-container">
-				<a href="#">© 2019 SEEDBEAUTY</a>
+				<routerLink to="" >© 2019 SEEDBEAUTY</routerLink>
 			</div>
 		</section>
 	</footer>
 </template>
-<script>
-export default {
-    
-}
-</script>
 <style scoped>
 #footer {
     display: block;

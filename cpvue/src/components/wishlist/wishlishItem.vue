@@ -1,7 +1,7 @@
 <template>
   <div class="wishListItems_wrap">
     <div class="wishlistItem" v-for="(w,i) of wishListItems" :key="i">
-      <button @click="removeItem(i)">
+      <button class="remove-btn hvr-grow-shadow" @click="removeItem(i)">
         <svg class="iconicon-close-small" aria-hidden="true">
           <use xlink:href="#iconicon-close"></use>
         </svg>
@@ -15,8 +15,8 @@
         <p class="itemName">{{w.name}}</p>
         <p class="itemCategory">{{w.category}}</p>
         <p class="itemPrice">${{w.price}}</p>
+        <addToBag class="add-tobag" @click.native="addToBag(i)"></addToBag>
       </div>
-      <addToBag @click.native="addToBag(i)"></addToBag>
     </div>
   </div>
 </template>
@@ -36,12 +36,17 @@ export default {
   },
   methods: {
     isLoad(){
-      this.$store.commit('setWishlistInfo')
-      this.wishListItems=this.$store.state.wishList
+      funs.getShowWishlist(result=>{
+        this.wishListItems = result.data.wishList
+        localStorage.setItem('wishListItems',JSON.stringify(this.wishListItems))
+      })
     },
     removeItem(i){
       var {pid} = this.wishListItems[i]
-      this.$store.commit('setRemoveWishListInfo',pid)
+      funs.getRemoveWishlist(pid,result=>{
+        this.wishListItems = result.data.wishList
+        localStorage.setItem('wishListItems',JSON.stringify(this.wishListItems))
+      })
       this.wishListItems.splice(i,1)
     },
     addToBag(i){
@@ -70,15 +75,6 @@ export default {
   margin: 0px 5px;
   position: relative;
 }
-.wishlistItem button{
-  width: 20px;
-  border: none;
-  outline-color: #d9ccf1;
-  cursor: pointer;
-  position: absolute;
-  right: 3%;
-  background-color: transparent;
-}
 .wishlistItem .itemImgContainer{
   width: 100%;
 }
@@ -92,6 +88,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 5px 0 20px 0;
+  flex-direction: column;
 }
 .wishlistItem .wishlistContent p{
   width: 100%;
@@ -103,5 +100,16 @@ export default {
 .wishlistItem .wishlistContent .itemName{
   font:14px/1.2 "Visby CF Extra Bold";
   font-weight: bolder;
+}
+.add-tobag{
+  width: 100%;
+}
+.remove-btn{
+  width: 20px;
+  position: absolute;
+  right: 5px;
+  border: none;
+  background-color: transparent;
+  outline: #f3edff;
 }
 </style>

@@ -10,9 +10,8 @@
                 <label class="product-details_type">{{product.category}}</label>
               </div>
               <div class="product-details-prices">
-                4
                 <label for class="product-details_price-sale">
-                  <span class="price-sale">${{product.price}}</span>
+                  <span class="price-sale">¥{{product.price}}</span>
                 </label>
               </div>
               <div class="product-details-afterpay">
@@ -31,7 +30,7 @@
               </div>
               <div class="product-details-prices hidetablet">
                 <label for class="product-details_price-sale">
-                  <span class="price-sale">${{product.price}}</span>
+                  <span class="price-sale">¥{{product.price}}</span>
                 </label>
               </div>
               <div class="product-details-afterpay hidetablet">
@@ -39,10 +38,10 @@
               </div>
               <form action class="product-details-actions">
                 <div id="quantity">
-                  <el-inp ut-number size="mini" :min="1" v-model="getNum" @change="handleChange"></el-inp>
+                  <el-input-number size="mini" :min="1" v-model="getNum" @change="handleChange"></el-input-number>
                 </div>
                 <div class="product-actions_buttons">
-                  <input type="submit" class="btn" value="Add to bag" @click="add"/>
+                  <button class="btn hvr-grow-shadow" @click="add">Add to bag</button>
                 </div>
               </form>
               <div class="product-details-wishlish">
@@ -68,21 +67,21 @@
               <div class="product-details-social">
                 <ul>
                   <li>
-                    <router-link to="" class="footer_social-facebook">
+                    <router-link to="" class="footer_social-facebook hvr-float">
                       <svg class="iconfacebook_product" aria-hidden="true">
                         <use xlink:href="#iconfacebook" />
                       </svg>
                     </router-link>
                   </li>
                   <li>
-                    <router-link to="" class="footer_social-facebook">
+                    <router-link to="" class="footer_social-facebook hvr-float">
                       <svg class="iconpinterest_product" aria-hidden="true">
                         <use xlink:href="#iconpinterest" />
                       </svg>
                     </router-link>
                   </li>
                   <li>
-                    <router-link to="" class="footer_social-facebook">
+                    <router-link to="" class="footer_social-facebook hvr-float">
                       <svg class="iconttww_product" aria-hidden="true">
                         <use xlink:href="#iconttww" />
                       </svg>
@@ -672,11 +671,10 @@ label {
 .owl-carousel
   .owl-carousel_item
   .carousel-product_action
-  form
-  input[type="submit"] {
+  .btn {
   width: 100%;
 }
-input[type="submit"] {
+.btn {
   font: 0.8em/1 "VisbyCFBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -690,7 +688,7 @@ input[type="submit"] {
   letter-spacing: 0.0625em;
   transition: all 0.2s ease;
 }
-input[type="submit"]:hover {
+.btn:hover {
   background: #333;
   color: #fff;
 }
@@ -777,6 +775,7 @@ input[type="submit"]:hover {
   justify-content: center;
   font: 16px "Visby CF Extra Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: bolder;
+  padding-left: 20px;
 }
 .product-details .el-icon-arrow-right:before{
   content: ''

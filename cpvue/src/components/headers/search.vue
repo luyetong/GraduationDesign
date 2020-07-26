@@ -2,15 +2,34 @@
     <div>
         <div class="header_search-container">
             <form class="header_search-bar">
-                <input class="header_search-bar--input" type="text" placeholder="tell us what you want" maxlength="255">
-                <input class="header_search-bar-button" type="submit" value="Search">
+                <input class="header_search-bar--input" type="text" placeholder="tell us what you want" maxlength="255" v-model="searchContent">
+                <input class="header_search-bar-button" type="submit" value="Search" @click="search">
             </form>
         </div>
     </div>
 </template>
 <script>
+import funs from '../../funs.js'
+import { mapMutations } from 'vuex'
 export default {
-    name:'HeaderSearch'
+    name:'HeaderSearch',
+    data() {
+        return {
+            searchContent:'',
+            productList:[]
+        }
+    },
+    methods:{
+        search(){
+            funs.getSearchProducts(this.searchContent,result=>{
+                if(result.data.code===1){
+                    this.productList = result.data.product
+                    this.setSearchProducts(this.productList)
+                }
+            })
+        },
+        ...mapMutations(['setSearchProducts'])
+    }
 }
 </script>
 <style scoped>
